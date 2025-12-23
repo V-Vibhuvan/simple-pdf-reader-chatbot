@@ -18,7 +18,8 @@ embedding = HuggingFaceEmbeddings()
 
 llm = ChatGroq(
     model="llama-3.1-8b-instant",
-    temperature=0.0
+    temperature=0.0,
+    groq-api-key= st.secrets["GROQ_API_KEY"]
 )
 
 def process_document_to_chroma_db(file_name):
@@ -50,5 +51,6 @@ def answer_question(user_question):
     )
     response = qa_chain.invoke({"query": user_question})
     answer = response["result"]
+
 
     return answer
