@@ -1,4 +1,5 @@
 import os
+import streamlit as st
 from dotenv import load_dotenv
 
 from langchain_community.document_loaders import UnstructuredPDFLoader
@@ -19,7 +20,7 @@ embedding = HuggingFaceEmbeddings()
 llm = ChatGroq(
     model="llama-3.1-8b-instant",
     temperature=0.0,
-    groq-api-key= st.secrets["GROQ_API_KEY"]
+    groq_api_key= st.secrets["GROQ_API_KEY"]
 )
 
 def process_document_to_chroma_db(file_name):
@@ -54,3 +55,4 @@ def answer_question(user_question):
 
 
     return answer
+
